@@ -1,16 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Page Title</title>
+  <title>Rock Paper Scissors</title>
   <meta charset="UTF-8"/>
 </head>
 <body>
+
+    <button class="rock"> ROCK </button>
+
+    <button class="paper"> PAPER </button>
+
+    <button class="scissors"> SCISSORS </button>
+
   <script>
 
 
 /******************************************* 
 * SCORE VARIABLES *
-*/
+
 
 let playerScore = 0;
 let computerScore = 0;
@@ -28,6 +35,20 @@ function computerPlay() {
 /******************************************* 
 * PLAYER CHOICE *
 */
+
+
+
+const buttons = document.querySelectorAll('button');
+
+buttons.forEach(button => button.addEventListener('click', play));
+
+function play(e) {
+    playRound(e.target.className);
+}
+
+
+
+/*
 
 function playerPlay() 
             {
@@ -52,7 +73,7 @@ function playerPlay()
             }
     
 
-
+*/
             
 
 /******************************************* 
@@ -61,38 +82,39 @@ function playerPlay()
 
 function playRound(playerSelection, computerSelection) {
 
-    let player = playerSelection.toLowerCase();
-    let computer = computerSelection.toLowerCase();
+    computerSelection = computerPlay();
+    let player = playerSelection;
+    let computer = computerSelection;
      
     if(player === 'rock') {
         if(computer === 'rock') {
             console.log(`It's a tie ${player} and ${computer}`);
         } else if(computer === 'paper') {
             console.log(`You loose ${computer} beats ${player}`);
-            computerScore++;
+            //computerScore++;
         } else {
             console.log(`You win ${player} beats ${computer}`);
-            playerScore++;
+            //playerScore++;
         }
     } else if(player === 'paper') {
         if(computer === 'paper') {
             console.log(`It's a tie ${player} and ${computer}`);
         }   else if(computer === 'scissors') {
             console.log(`You loose ${computer} beats ${player}`);
-            computerScore++;
+            //computerScore++;
         } else {
             console.log(`You win ${player} beats ${computer}`);
-            playerScore++;
+            //playerScore++;
         }
     } else {
         if(computer === 'scissors') {
             console.log(`It's a tie ${player} and ${computer}`);
         }   else if(computer === 'rock') {
             console.log(`You loose ${computer} beats ${player}`);
-            computerScore++;
+            //computerScore++;
         } else {
             console.log(`You win ${player} beats ${computer}`);
-            playerScore++;
+            //playerScore++;
         }
     }
 }
@@ -100,13 +122,13 @@ function playRound(playerSelection, computerSelection) {
 
 /******************************************* 
 * PLAY MULTIPLE ROUNDS *
-*/
+
 
 function game() {
     
     let round = 0;
     while(round < 5) {
-        let playerSelection = playerPlay()
+        let playerSelection = playerPlay;
         let computerSelection = computerPlay()
         playRound(playerSelection, computerSelection);
         console.log(`Player Score: ${playerScore}
@@ -124,7 +146,7 @@ Computer Score: ${computerScore}`);
 
 
 game();
-
+*/
   </script>
 </body>
 </html>
