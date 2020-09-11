@@ -6,147 +6,20 @@
 </head>
 <body>
 
-    <button class="rock"> ROCK </button>
+    <div id="container">
 
-    <button class="paper"> PAPER </button>
+        <button class="rock"> ROCK </button>
 
-    <button class="scissors"> SCISSORS </button>
+        <button class="paper"> PAPER </button>
 
-  <script>
+        <button class="scissors"> SCISSORS </button>
 
+    </div>
 
-/******************************************* 
-* SCORE VARIABLES *
-
-
-let playerScore = 0;
-let computerScore = 0;
-
-/*
-/******************************************* 
-* COMPUTER CHOICE *
-*/
-
-function computerPlay() {
-    const choices = ['rock', 'paper','scissors'];
-    return choices[Math.floor(Math.random() * 3)];
-}
-
-/******************************************* 
-* PLAYER CHOICE *
-*/
+  <script src="script.js">
 
 
 
-const buttons = document.querySelectorAll('button');
-
-buttons.forEach(button => button.addEventListener('click', play));
-
-function play(e) {
-    playRound(e.target.className);
-}
-
-
-
-/*
-
-function playerPlay() 
-            {
-                let choices = ['rock', 'paper', 'scissors']
-                let playerInput = prompt('Rock, Paper, or Scissors?');
-                if (choices.includes(playerInput.toLowerCase()))
-                {
-                    return playerInput;
-                }
-                else 
-                {
-                    playerInput = prompt('You MUST enter Rock, Paper, or Scissors?');
-
-                    if (choices.includes(playerInput.toLowerCase()))
-                {
-                    return playerInput;
-                }
-                    else {
-                        alert(`End of game`);
-                    }
-                }
-            }
-    
-
-*/
-            
-
-/******************************************* 
-* PLAY SINGLE ROUND *
-*/
-
-function playRound(playerSelection, computerSelection) {
-
-    computerSelection = computerPlay();
-    let player = playerSelection;
-    let computer = computerSelection;
-     
-    if(player === 'rock') {
-        if(computer === 'rock') {
-            console.log(`It's a tie ${player} and ${computer}`);
-        } else if(computer === 'paper') {
-            console.log(`You loose ${computer} beats ${player}`);
-            //computerScore++;
-        } else {
-            console.log(`You win ${player} beats ${computer}`);
-            //playerScore++;
-        }
-    } else if(player === 'paper') {
-        if(computer === 'paper') {
-            console.log(`It's a tie ${player} and ${computer}`);
-        }   else if(computer === 'scissors') {
-            console.log(`You loose ${computer} beats ${player}`);
-            //computerScore++;
-        } else {
-            console.log(`You win ${player} beats ${computer}`);
-            //playerScore++;
-        }
-    } else {
-        if(computer === 'scissors') {
-            console.log(`It's a tie ${player} and ${computer}`);
-        }   else if(computer === 'rock') {
-            console.log(`You loose ${computer} beats ${player}`);
-            //computerScore++;
-        } else {
-            console.log(`You win ${player} beats ${computer}`);
-            //playerScore++;
-        }
-    }
-}
-
-
-/******************************************* 
-* PLAY MULTIPLE ROUNDS *
-
-
-function game() {
-    
-    let round = 0;
-    while(round < 5) {
-        let playerSelection = playerPlay;
-        let computerSelection = computerPlay()
-        playRound(playerSelection, computerSelection);
-        console.log(`Player Score: ${playerScore}
-Computer Score: ${computerScore}`);
-        round++
-}
-    if(playerScore > computerScore) {
-        console.log(`You win!`);
-    } else if(playerScore < computerScore) {
-        console.log(`You lose!`);
-    } else {
-        console.log(`You draw`);
-    }
-}
-
-
-game();
-*/
   </script>
 </body>
 </html>
