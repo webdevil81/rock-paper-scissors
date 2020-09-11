@@ -35,6 +35,7 @@ function finalScore() {
 /******************************************* 
 * COMPUTER CHOICE *
 */
+let computerChoice;
 
 function computerPlay() {
     const choices = ['rock', 'paper','scissors'];
@@ -45,6 +46,7 @@ function computerPlay() {
 * PLAYER CHOICE *
 */
 
+let playerChoice;
 const buttons = document.querySelectorAll('button');
 
 buttons.forEach(button => button.addEventListener('click', play));
@@ -60,54 +62,51 @@ function play(e) {
 function playRound(playerSelection, computerSelection) {
 
     computerSelection = computerPlay();
-    let player = playerSelection;
-    let computer = computerSelection;
-
-   
-roundResult.textContent = 'You win!';
+    
+    playerChoice = playerSelection;
+    computerChoice = computerSelection;
      
-    if(player === 'rock') {
-        if(computer === 'rock') {
-            roundResult.textContent = (`It's a tie ${player} and ${computer}`);
-        } else if(computer === 'paper') {
-            roundResult.textContent = (`You loose ${computer} beats ${player}`);
-            ++computerScore;
-            score.textContent = (`${playerScore} vs ${computerScore}`);
-            if (computerScore === 5) {finalScore();}
+    if(playerSelection === 'rock') {
+        if(computerSelection === 'rock') {
+            drawRound();
+        } else if(computerSelection === 'paper') {
+            computerWinRound();
         } else {
-            roundResult.textContent = (`You win ${player} beats ${computer}`);
-            ++playerScore;
-            score.textContent = (`${playerScore} vs ${computerScore}`);
-            if (playerScore === 5) {finalScore();}
+            playerWinRound();
         }
-    } else if(player === 'paper') {
-        if(computer === 'paper') {
-            roundResult.textContent = (`It's a tie ${player} and ${computer}`);
-        }   else if(computer === 'scissors') {
-            roundResult.textContent = (`You loose ${computer} beats ${player}`);
-            ++computerScore;
-            score.textContent = (`${playerScore} vs ${computerScore}`);
-            if (computerScore === 5) {finalScore();}
+    } else if(playerSelection === 'paper') {
+        if(computerSelection === 'paper') {
+            drawRound();
+        }   else if(computerSelection === 'scissors') {
+            computerWinRound();
         } else {
-            roundResult.textContent = (`You win ${player} beats ${computer}`);
-            ++playerScore;
-            score.textContent = (`${playerScore} vs ${computerScore}`);
-            if (playerScore === 5) {finalScore();}
+            playerWinRound();
         }
     } else {
-        if(computer === 'scissors') {
-            roundResult.textContent = (`It's a tie ${player} and ${computer}`);
-        }   else if(computer === 'rock') {
-            roundResult.textContent = (`You loose ${computer} beats ${player}`);
-            ++computerScore;
-            score.textContent = (`${playerScore} vs ${computerScore}`);
-            if (computerScore === 5) {finalScore();}
+        if(computerSelection === 'scissors') {
+            drawRound();
+        }   else if(computerSelection === 'rock') {
+            computerWinRound();
         } else {
-            roundResult.textContent = (`You win ${player} beats ${computer}`);
-            ++playerScore;
-            score.textContent = (`${playerScore} vs ${computerScore}`);
-            if (playerScore === 5) {finalScore();}
+            playerWinRound();
         }
     }
 }
 
+function playerWinRound() {
+    roundResult.textContent = `You win ${playerChoice} beats ${computerChoice}`;
+    playerScore++;
+    score.textContent = `${playerScore} vs ${computerScore}`;
+    if (playerScore === 5) {finalScore();}
+}
+
+function computerWinRound() {
+    roundResult.textContent = `You loose ${computerChoice} beats ${playerChoice}`;
+    computerScore++;
+    score.textContent = `${playerScore} vs ${computerScore}`;
+    if (computerScore === 5) {finalScore();}
+}
+
+function drawRound() {
+    roundResult.textContent = `It's a tie ${playerChoice} and ${computerChoice}`;
+}
