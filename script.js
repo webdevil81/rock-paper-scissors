@@ -14,36 +14,24 @@ const score = document.createElement('h3');
 score.textContent = (`${playerScore} vs ${computerScore}`);
 
 const roundResult = document.createElement('p');
+const finalResult = document.createElement('h1');
 
 scoreBoard.appendChild(score);
 scoreBoard.appendChild(roundResult);
 container.insertBefore(scoreBoard, container.firstChild);
 
-
-/*
-function game() {
-    
-    let round = 0;
-    while(round < 5) {
-        let playerSelection = playerPlay;
-        let computerSelection = computerPlay()
-        playRound(playerSelection, computerSelection);
-        console.log(`Player Score: ${playerScore}
-Computer Score: ${computerScore}`);
-        round++
-}
-    if(playerScore > computerScore) {
-        console.log(`You win!`);
-    } else if(playerScore < computerScore) {
-        console.log(`You lose!`);
+function finalScore() {
+    scoreBoard.removeChild(score);
+    scoreBoard.removeChild(roundResult);
+    if (playerScore > computerScore) {
+        finalResult.textContent = `You win! 5 vs ${computerScore}`;
+        scoreBoard.appendChild(finalResult);
     } else {
-        console.log(`You draw`);
+        finalResult.textContent = `You loose! 5 vs ${playerScore}`;
+        scoreBoard.appendChild(finalResult);
     }
 }
 
-
-game();
-*/
 /******************************************* 
 * COMPUTER CHOICE *
 */
@@ -83,68 +71,43 @@ roundResult.textContent = 'You win!';
             roundResult.textContent = (`It's a tie ${player} and ${computer}`);
         } else if(computer === 'paper') {
             roundResult.textContent = (`You loose ${computer} beats ${player}`);
-            computerScore++;
+            ++computerScore;
             score.textContent = (`${playerScore} vs ${computerScore}`);
+            if (computerScore === 5) {finalScore();}
         } else {
             roundResult.textContent = (`You win ${player} beats ${computer}`);
-            playerScore++;
+            ++playerScore;
             score.textContent = (`${playerScore} vs ${computerScore}`);
+            if (playerScore === 5) {finalScore();}
         }
     } else if(player === 'paper') {
         if(computer === 'paper') {
             roundResult.textContent = (`It's a tie ${player} and ${computer}`);
         }   else if(computer === 'scissors') {
             roundResult.textContent = (`You loose ${computer} beats ${player}`);
-            computerScore++;
+            ++computerScore;
             score.textContent = (`${playerScore} vs ${computerScore}`);
+            if (computerScore === 5) {finalScore();}
         } else {
             roundResult.textContent = (`You win ${player} beats ${computer}`);
-            playerScore++;
+            ++playerScore;
             score.textContent = (`${playerScore} vs ${computerScore}`);
+            if (playerScore === 5) {finalScore();}
         }
     } else {
         if(computer === 'scissors') {
             roundResult.textContent = (`It's a tie ${player} and ${computer}`);
         }   else if(computer === 'rock') {
             roundResult.textContent = (`You loose ${computer} beats ${player}`);
-            computerScore++;
+            ++computerScore;
             score.textContent = (`${playerScore} vs ${computerScore}`);
+            if (computerScore === 5) {finalScore();}
         } else {
             roundResult.textContent = (`You win ${player} beats ${computer}`);
-            playerScore++;
+            ++playerScore;
             score.textContent = (`${playerScore} vs ${computerScore}`);
+            if (playerScore === 5) {finalScore();}
         }
     }
 }
 
-
-/******************************************* 
-* SCORE DIV *
-*/
-
-
-
-/*
-function game() {
-    
-    let round = 0;
-    while(round < 5) {
-        let playerSelection = playerPlay;
-        let computerSelection = computerPlay()
-        playRound(playerSelection, computerSelection);
-        console.log(`Player Score: ${playerScore}
-Computer Score: ${computerScore}`);
-        round++
-}
-    if(playerScore > computerScore) {
-        console.log(`You win!`);
-    } else if(playerScore < computerScore) {
-        console.log(`You lose!`);
-    } else {
-        console.log(`You draw`);
-    }
-}
-
-
-game();
-*/
